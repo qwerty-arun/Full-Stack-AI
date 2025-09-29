@@ -9,10 +9,18 @@ class User(BaseModel):
             raise ValueError("Username must be atleast 4 characters")
         return v
     
+    # raw username is cleaned up before Pydantic even checks types
+    @model_validator(mode="before")
+    def strip_and_fix(cls, data):
+        # data is a dict with raw input
+        data["username"] = data["username"].strip().lower()
+        return data
+    
 class SignupData(BaseModel):
     password: str
     confirm_password: str
 
+    # check or modify the whole object after all the fields are validated.
     @model_validator(mode='after')
     def password_match(cls, values):
         if values.password != values.confirm_password:
@@ -20,7 +28,14 @@ class SignupData(BaseModel):
         return values
 
 # User(username="Ar")   # ❌ Raises ValueError
-User(username="Arun") # ✅ Works
+u = User(username="   Arun   ") # ✅ Works
+print(u)
 
 # SignupData(password="1234", confirm_password="123") # ❌ Raises ValueError
 SignupData(password="1234", confirm_password="1234") # ✅ Works
+
+"""
+🔑 Summary
+before = fix/normalize input data (dict level) before field validation.
+after = validate or adjust the model object after field validation.
+"""
