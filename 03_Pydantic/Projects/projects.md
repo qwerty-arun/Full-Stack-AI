@@ -2,22 +2,22 @@
 
 ## 🔹 Beginner Projects
 
-- [ ] **User Signup / Login Data Validation**
+- [x] **User Signup / Login Data Validation**
 
    - Validate fields like username, email, password.
    - Add checks (min length, regex for email, matching password confirmation).
 
-- [ ] **Configuration Manager**
+- [x] **Configuration Manager**
 
    - Use `BaseSettings` to manage environment variables.
    - Example: database credentials, API keys, feature flags.
 
-- [ ] **JSON Schema Generator**
+- [x] **JSON Schema Generator**
 
    - Define models and export their JSON Schema (`.model_json_schema()`).
    - Visualize how models translate to API contracts.
 
-- [ ] **Data Cleaning Utility**
+- [x] **Data Cleaning Utility**
 
    - Accept unstructured JSON (maybe from a file).
    - Parse into a clean `BaseModel` with strict typing (e.g., convert strings like `"42"` into ints).
