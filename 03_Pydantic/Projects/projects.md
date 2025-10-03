@@ -26,7 +26,7 @@
 
 ## 🔹 Intermediate Projects
 
-- [ ] **REST API with FastAPI + Pydantic**
+- [x] **REST API with FastAPI + Pydantic**
 
    - Use Pydantic models for request/response schemas.
    - Example: A simple **Task Manager API** with task creation, updates, and validations.
